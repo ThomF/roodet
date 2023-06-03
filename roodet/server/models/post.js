@@ -11,3 +11,10 @@ export const PostSchema = new Schema({
     // TODO Look into flares
 
 }, { timestamps: true, toJSON: { virtuals: true } })
+
+PostSchema.virtual('creator', {
+    ref: 'Account',
+    localField: 'creatorId',
+    foreignField: '_id',
+    justOne: true
+})
