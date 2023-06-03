@@ -6,10 +6,19 @@ export class PostsController extends BaseController {
     constructor() {
         super('api/posts')
         this.router
-            // .get('', this.getAllPosts)
+            .get('', this.getAllPosts)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createPost)
 
+    }
+
+    async getAllPosts(req, res, next) {
+        try {
+            const post = await postsService.getAllPosts()
+            res.send(post)
+        } catch (error) {
+            next(error)
+        }
     }
 
     async createPost(req, res, next) {
