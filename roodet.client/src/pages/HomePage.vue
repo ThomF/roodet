@@ -4,18 +4,23 @@
       <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"
         class="rounded-circle">
       <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
+        {{ post }}
       </h1>
     </div>
   </div>
 </template>
 
 <script>
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import { logger } from '../utils/Logger';
 import { postsService } from '../services/PostsService';
+import { Post } from '../models/Post.js';
+import { AppState } from '../AppState';
 
 export default {
+  props: {
+    posts: { type: Post, required: true }
+  },
   setup() {
     async function getAllPosts() {
       try {
@@ -28,7 +33,9 @@ export default {
     onMounted(() => {
       getAllPosts()
     })
-    return {}
+    return {
+      post: computed(() => AppState.post)
+    }
   }
 }
 </script>
