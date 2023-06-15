@@ -1,5 +1,5 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+  <!-- <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
     <div class="home-card p-5 bg-white rounded elevation-3">
       <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"
         class="rounded-circle">
@@ -7,6 +7,10 @@
         {{ post }}
       </h1>
     </div>
+  </div> -->
+
+  <div v-for="p in posts">
+    <Post :post="p" />
   </div>
 </template>
 
@@ -34,7 +38,7 @@ export default {
       getAllPosts()
     })
     return {
-      post: computed(() => AppState.post)
+      posts: computed(() => AppState.post)
     }
   }
 }
