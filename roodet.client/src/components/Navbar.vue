@@ -3,7 +3,7 @@
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <!-- <img alt="logo" src="../assets/img/cw-logo.png" height="45" /> -->
-        <h3> <i class="mdi mdi-reddit text-danger fs-1"></i> roodet</h3>
+        <h3> <i class="mdi mdi-reddit text-orange fs-1 flip"></i> roodet</h3>
       </div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -53,5 +53,15 @@ a:hover {
   nav {
     height: 64px;
   }
+}
+
+.text-orange {
+  color: rgb(255, 106, 0);
+}
+
+.flip {
+  display: inline-block;
+  transform: rotate(180deg);
+  writing-mode: vertical-lr;
 }
 </style>
